@@ -3,7 +3,6 @@
 const NAV = [
   { to: 'solutions', label: 'Solutions' },
   { to: 'services', label: 'Services' },
-  { to: 'clients', label: 'Clients' },
   { to: 'cases', label: 'Case Studies' },
   { to: 'about', label: 'About' },
 ];

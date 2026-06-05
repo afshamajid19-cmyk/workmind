@@ -5,7 +5,7 @@ function Nav({ route, go }) {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     const sc = document.querySelector('.wm-scroll');
-    const onScroll = () => setScrolled((sc ? sc.scrollTop : window.scrollY) > 40);
+    const onScroll = () => setScrolled((sc ? sc.scrollTop : window.scrollY) > 60);
     onScroll();
     (sc || window).addEventListener('scroll', onScroll, { passive: true });
     return () => (sc || window).removeEventListener('scroll', onScroll);
@@ -15,10 +15,10 @@ function Nav({ route, go }) {
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         transition: 'all var(--t)',
-        background: scrolled ? 'rgba(7,14,24,0.72)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(18px) saturate(140%)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(140%)' : 'none',
-        borderBottom: `1px solid ${scrolled ? 'var(--glass-stroke)' : 'transparent'}`,
+        background: scrolled ? 'rgba(10,14,26,0.85)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px) saturate(160%)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(160%)' : 'none',
+        borderBottom: `1px solid ${scrolled ? 'rgba(255,255,255,0.06)' : 'transparent'}`,
       }}>
         <div className="wm-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 74 }}>
           <a onClick={() => go('home')} style={{ cursor: 'pointer' }}><Logo /></a>
@@ -74,10 +74,18 @@ function Footer({ go }) {
             <Logo />
             <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--on-dark-2)', fontSize: '0.9rem', maxWidth: 250, marginTop: 16, lineHeight: 1.6 }}>We audit the leaks &amp; 10× your workflow efficiency. Assessment-led AI &amp; automation, built for SA &amp; the Gulf.</p>
             <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
-              {['linkedin', 'twitter', 'mail'].map((s) => <a key={s} style={{ width: 38, height: 38, borderRadius: 10, display: 'grid', placeItems: 'center', background: 'var(--glass-fill)', border: '1px solid var(--glass-stroke)', cursor: 'pointer' }}><Icon name={s} size={16} color="var(--on-dark-2)" /></a>)}
+              {[
+                { icon: 'linkedin', href: 'https://www.linkedin.com/company/workmind-ai/' },
+                { icon: 'twitter',  href: '#' },
+                { icon: 'mail',     href: 'mailto:solutions@theworkmind.ai' },
+              ].map((s) => (
+                <a key={s.icon} href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" style={{ width: 38, height: 38, borderRadius: 10, display: 'grid', placeItems: 'center', background: 'var(--glass-fill)', border: '1px solid var(--glass-stroke)', cursor: 'pointer', textDecoration: 'none' }}>
+                  <Icon name={s.icon} size={16} color="var(--on-dark-2)" />
+                </a>
+              ))}
             </div>
           </div>
-          <div><div style={col}>Company</div>{NAV.map((l) => <a key={l.to} style={lk} onClick={() => go(l.to)}>{l.label}</a>)}<a style={lk} onClick={() => go('contact')}>Contact</a></div>
+          <div><div style={col}>Company</div>{NAV.map((l) => <a key={l.to} style={lk} onClick={() => go(l.to)}>{l.label}</a>)}<a style={lk} onClick={() => go('contact')}>Contact</a><a style={lk} onClick={() => go('about')}>About</a></div>
           <div><div style={col}>Solutions</div>{['Professional Services', 'Property', 'Construction', 'M365 / Copilot', 'Concierge'].map((p) => <span key={p} style={lk}>{p}</span>)}</div>
           <div><div style={col}>Get Started</div><a style={{ ...lk, color: 'var(--teal)', fontWeight: 600 }} onClick={() => go('contact')}>Book a Call →</a><span style={lk}>solutions@theworkmind.ai</span><span style={lk}>theworkmind.ai</span></div>
         </div>

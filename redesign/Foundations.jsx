@@ -17,50 +17,63 @@ function Icon({ name, size = 24, color = 'currentColor', sw = 1.75, style }) {
   }, children);
 }
 
-/* ---------- Logo (gear-network mark + wordmark) ---------- */
+/* ---------- Logo (toothed gear-network mark + wordmark) ---------- */
 function Logo({ dark = false, compact = false }) {
   const c = dark ? '#0D1B2A' : '#fff';
+  /* 12-tooth gear ring (evenodd hole) + 3 network circles + 2 satellite dots */
+  const GEAR = "M54 32 L60 33.5 L59.4 37.8 L53.3 37.7 L51.1 43 L55.5 47.3 L52.8 50.7 L47.6 47.6 L43 51.1 L44.7 57 L40.7 58.6 L37.7 53.3 L32 54 L30.5 60 L26.2 59.4 L26.3 53.3 L21 51.1 L16.8 55.5 L13.3 52.8 L16.4 47.6 L13 43 L7.1 44.7 L5.4 40.7 L10.8 37.7 L10 32 L4 30.5 L4.6 26.2 L10.8 26.3 L13 21 L8.5 16.8 L11.2 13.3 L16.4 16.4 L21 13 L19.3 7.1 L23.4 5.4 L26.3 10.8 L32 10 L33.5 4 L37.8 4.6 L37.7 10.8 L43 13 L47.3 8.5 L50.7 11.2 L47.6 16.4 L51.1 21 L57 19.3 L58.6 23.4 L53.3 26.3 Z M32 15 A17 17 0 0 1 32 49 A17 17 0 0 1 32 15 Z";
   return (
     <div style={{ display: 'inline-flex', alignItems: 'center', gap: 11 }}>
       <svg width="32" height="32" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-        {/* C-arc gear ring: 270° partial ring, opening on the right */}
-        <path fill={c} d="M44.4 50.4 A26 26 0 1 1 44.4 13.6 L38 19.9 A17 17 0 1 0 38 44.1 Z" />
-        {/* Network molecule nodes — fill the gear opening */}
-        <circle cx="40" cy="19" r="10" fill={c} />
-        <circle cx="45" cy="34" r="8.5" fill={c} />
-        <circle cx="33" cy="48" r="7" fill={c} />
-        {/* Satellite nodes outside the ring */}
-        <circle cx="55" cy="10" r="4.5" fill={c} />
-        <circle cx="57" cy="53" r="4" fill={c} />
+        <path fill={c} fillRule="evenodd" d={GEAR} />
+        <circle cx="22" cy="19" r="10" fill={c} />
+        <circle cx="34" cy="32" r="9"  fill={c} />
+        <circle cx="22" cy="45" r="10" fill={c} />
+        <circle cx="54" cy="12" r="5"  fill={c} />
+        <circle cx="56" cy="52" r="4.5" fill={c} />
       </svg>
       {!compact && <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '0.98rem', letterSpacing: '0.06em', color: c }}>WORKMIND<span style={{ color: 'var(--teal)' }}>.AI</span></span>}
     </div>
   );
 }
 
-/* ---------- Button (premium, sheen on hover) ---------- */
+/* ---------- Button (premium, shimmer + scale on hover) ---------- */
 function Button({ variant = 'primary', children, onClick, full, size = 'md', style }) {
   const [h, setH] = useState(false);
+  const [sheen, setSheen] = useState(false);
   const pad = size === 'lg' ? '17px 32px' : size === 'sm' ? '10px 18px' : '14px 26px';
   const base = {
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 9,
     fontFamily: 'Syne, sans-serif', fontWeight: 600, fontSize: size === 'lg' ? '1rem' : '0.92rem',
+    letterSpacing: '0.01em',
     borderRadius: 999, padding: pad, width: full ? '100%' : undefined,
     transition: 'transform var(--t) var(--ease), box-shadow var(--t), background var(--t), color var(--t), border-color var(--t)',
-    transform: h ? 'translateY(-2px)' : 'none', position: 'relative', overflow: 'hidden', ...style,
+    transform: h ? 'translateY(-2px) scale(1.03)' : 'none',
+    position: 'relative', overflow: 'hidden', ...style,
   };
   const variants = {
-    primary: { background: h ? 'linear-gradient(120deg,#6EC6E0,#1B4F8A)' : 'var(--teal)', color: '#06121d', boxShadow: h ? 'var(--e-teal)' : '0 6px 18px rgba(75,170,200,0.18)' },
+    primary: {
+      background: h ? 'linear-gradient(120deg,#7dd3fc,#1B4F8A)' : 'var(--teal)',
+      color: '#04111e',
+      boxShadow: h ? 'var(--e-teal)' : '0 6px 18px rgba(56,189,248,0.22)',
+      animation: !h ? 'wm-cta-pulse 3s ease-in-out infinite' : 'none',
+    },
     glass: { background: h ? 'rgba(255,255,255,0.10)' : 'var(--glass-fill-2)', color: '#fff', border: '1px solid var(--glass-stroke)', backdropFilter: 'blur(10px)' },
-    outline: { background: h ? 'var(--teal)' : 'transparent', color: h ? '#06121d' : 'var(--teal)', border: '1.5px solid var(--teal)' },
+    outline: { background: h ? 'var(--teal)' : 'transparent', color: h ? '#04111e' : 'var(--teal)', border: '1.5px solid var(--teal)' },
     ghost: { background: 'transparent', color: h ? '#fff' : 'var(--on-dark-2)' },
   };
+  const handleEnter = () => { setH(true); setSheen(true); setTimeout(() => setSheen(false), 700); };
   return (
-    <button onClick={onClick} onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)} style={{ ...base, ...variants[variant] }}>{children}</button>
+    <button onClick={onClick} onMouseEnter={handleEnter} onMouseLeave={() => setH(false)} style={{ ...base, ...variants[variant] }}>
+      {sheen && variant === 'primary' && (
+        <span style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent)', animation: 'wm-sheen-sweep 0.65s ease forwards', pointerEvents: 'none', borderRadius: 999 }} />
+      )}
+      {children}
+    </button>
   );
 }
 
-/* ---------- Eyebrow ---------- */
+/* ---------- Eyebrow (Unbounded sub-font) ---------- */
 function Eyebrow({ children, style }) { return <span className="wm-eyebrow" style={style}>{children}</span>; }
 
 /* ---------- Reveal (CSS entrance, capture-safe) ---------- */
