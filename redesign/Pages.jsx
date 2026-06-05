@@ -31,7 +31,7 @@ function Solutions({ go }) {
                   </div>
                   <div>
                     <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.7rem', color: 'var(--teal)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 7 }}>{ind.tag}</div>
-                    <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '1.4rem', color: '#fff' }}>{ind.name}</h3>
+                    <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: '1.18rem', letterSpacing: '-0.01em', color: 'var(--on-dark)' }}>{ind.name}</h3>
                     <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--on-dark-2)', fontSize: '0.92rem', lineHeight: 1.55, marginTop: 8 }}>{ind.pain}</p>
                   </div>
                   <div style={{ borderLeft: '1px solid var(--glass-stroke)', paddingLeft: 24 }}>
@@ -39,7 +39,7 @@ function Solutions({ go }) {
                     <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--on-dark)', fontSize: '0.92rem', lineHeight: 1.55 }}>{ind.fix}</p>
                   </div>
                   <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '1.5rem', color: 'var(--teal-lt)', lineHeight: 1 }}>{ind.metric.v}</div>
+                    <div style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800, fontSize: '1.6rem', letterSpacing: '-0.04em', color: 'var(--teal)', lineHeight: 1 }}>{ind.metric.v}</div>
                     <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.76rem', color: 'var(--on-dark-2)', marginTop: 6 }}>{ind.metric.d}</div>
                   </div>
                 </div>
@@ -67,7 +67,7 @@ function Services({ go }) {
                     <div style={{ width: 56, height: 56, borderRadius: 15, display: 'grid', placeItems: 'center', background: 'linear-gradient(135deg, rgba(75,170,200,0.2), rgba(27,79,138,0.14))', border: '1px solid var(--teal-stroke)' }}><Icon name={s.icon} size={27} color="var(--teal-lt)" /></div>
                     <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.82rem', color: 'var(--on-dark-3)' }}>{s.n}</span>
                   </div>
-                  <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '1.55rem', color: '#fff', marginTop: 22 }}>{s.title}</h3>
+                  <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: '1.22rem', letterSpacing: '-0.01em', lineHeight: 1.3, color: 'var(--on-dark)', marginTop: 22 }}>{s.title}</h3>
                   <div style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 600, color: 'var(--teal)', fontSize: '0.9rem', marginTop: 6 }}>{s.sub}</div>
                   <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--on-dark-2)', fontSize: '0.96rem', lineHeight: 1.62, marginTop: 16 }}>{s.body}</p>
                   <ul style={{ listStyle: 'none', padding: 0, margin: '22px 0 0', display: 'flex', flexDirection: 'column', gap: 11 }}>
@@ -88,7 +88,7 @@ function Services({ go }) {
                 <Reveal key={d.t} delay={i * 0.06}>
                   <GlassCard style={{ padding: 26, height: '100%' }}>
                     <Icon name={d.icon} size={26} color="var(--teal)" />
-                    <h4 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '1.1rem', color: '#fff', marginTop: 16 }}>{d.t}</h4>
+                    <h4 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: '1.05rem', letterSpacing: '-0.01em', color: 'var(--on-dark)', marginTop: 16 }}>{d.t}</h4>
                     <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--on-dark-2)', fontSize: '0.88rem', lineHeight: 1.55, marginTop: 9 }}>{d.d}</p>
                   </GlassCard>
                 </Reveal>
@@ -132,7 +132,7 @@ function Clients({ go }) {
           <div className="wm-credband" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16 }}>
             {[{ v: 50, suffix: '+', l: 'Engagements delivered' }, { v: 6, suffix: '', l: 'Industries served' }, { v: 2, prefix: '', suffix: ' regions', l: 'SA + GCC' }, { v: 25, suffix: '%', l: 'Avg. cost cut' }].map((s, i) => (
               <div key={i} className="wm-glass" style={{ padding: '26px 22px' }}>
-                <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 'clamp(1.8rem,3vw,2.6rem)', color: 'var(--teal-lt)', lineHeight: 1 }}><Counter value={s.v} prefix={s.prefix || ''} suffix={s.suffix || ''} /></div>
+                <div style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem,3.2vw,2.8rem)', letterSpacing: '-0.04em', color: 'var(--teal)', lineHeight: 1 }}><Counter value={s.v} prefix={s.prefix || ''} suffix={s.suffix || ''} /></div>
                 <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.82rem', color: 'var(--on-dark-2)', marginTop: 8 }}>{s.l}</div>
               </div>
             ))}
@@ -151,7 +151,7 @@ function Clients({ go }) {
               <div key={c.name} className="wm-glass" style={{ padding: 0, overflow: 'hidden', transition: 'border-color var(--t)' }}>
                 <image-slot id={`client-${c.name.replace(/[^a-z0-9]/gi, '-').toLowerCase()}`} shape="rect" placeholder={c.name} style={{ display: 'block', width: '100%', aspectRatio: '3 / 2' }}></image-slot>
                 <div style={{ padding: '10px 12px', borderTop: '1px solid var(--glass-stroke)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '0.8rem', color: '#fff' }}>{c.name}</span>
+                  <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: '0.8rem', letterSpacing: '-0.005em', color: 'var(--on-dark)' }}>{c.name}</span>
                   <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.62rem', color: 'var(--on-dark-3)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{c.sector}</span>
                 </div>
               </div>
@@ -235,7 +235,7 @@ function About({ go }) {
                 <Reveal key={d.t} delay={i * 0.06}>
                   <GlassCard style={{ padding: 26, height: '100%' }}>
                     <Icon name={d.icon} size={26} color="var(--teal)" />
-                    <h4 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '1.1rem', color: '#fff', marginTop: 16 }}>{d.t}</h4>
+                    <h4 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: '1.05rem', letterSpacing: '-0.01em', color: 'var(--on-dark)', marginTop: 16 }}>{d.t}</h4>
                     <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--on-dark-2)', fontSize: '0.88rem', lineHeight: 1.55, marginTop: 9 }}>{d.d}</p>
                   </GlassCard>
                 </Reveal>

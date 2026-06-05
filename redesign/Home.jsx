@@ -30,11 +30,11 @@ function HeroPanel() {
       </div>
       <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
         <div style={{ flex: 1, padding: 14, borderRadius: 13, background: 'linear-gradient(135deg, rgba(56,189,248,0.14), rgba(27,79,138,0.10))', border: '1px solid var(--teal-stroke)' }}>
-          <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '1.5rem', color: 'var(--teal-lt)' }}><Counter value={92} suffix="%" /></div>
+          <div style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800, fontSize: '1.7rem', letterSpacing: '-0.04em', color: 'var(--teal-lt)' }}><Counter value={92} suffix="%" /></div>
           <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', color: 'var(--on-dark-2)', marginTop: 2 }}>leads contacted &lt; 5 min</div>
         </div>
         <div style={{ flex: 1, padding: 14, borderRadius: 13, background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-stroke)' }}>
-          <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '1.5rem', color: 'var(--on-dark)' }}><Counter value={18} suffix=" hrs" /></div>
+          <div style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800, fontSize: '1.7rem', letterSpacing: '-0.04em', color: 'var(--on-dark)' }}><Counter value={18} suffix=" hrs" /></div>
           <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', color: 'var(--on-dark-2)', marginTop: 2 }}>reclaimed / week</div>
         </div>
       </div>
@@ -120,7 +120,7 @@ function ServicesBento({ go }) {
                   </div>
                   <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.78rem', color: 'var(--on-dark-3)', letterSpacing: '0.08em' }}>{s.n}</span>
                 </div>
-                <h3 style={{ marginTop: 22, color: 'var(--on-dark)' }}>{s.title}</h3>
+                <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: '1.18rem', letterSpacing: '-0.01em', lineHeight: 1.3, marginTop: 22, color: 'var(--on-dark)' }}>{s.title}</h3>
                 <div style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 600, color: 'var(--teal)', fontSize: '0.88rem', marginTop: 8, letterSpacing: '0.01em' }}>{s.sub}</div>
                 <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--on-dark-2)', fontSize: '0.94rem', lineHeight: 1.65, marginTop: 14, letterSpacing: '0.01em' }}>{s.body}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 18 }}>

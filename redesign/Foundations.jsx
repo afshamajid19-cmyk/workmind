@@ -44,8 +44,8 @@ function Button({ variant = 'primary', children, onClick, full, size = 'md', sty
   const pad = size === 'lg' ? '17px 32px' : size === 'sm' ? '10px 18px' : '14px 26px';
   const base = {
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 9,
-    fontFamily: 'Syne, sans-serif', fontWeight: 600, fontSize: size === 'lg' ? '1rem' : '0.92rem',
-    letterSpacing: '0.01em',
+    fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: size === 'lg' ? '1rem' : '0.92rem',
+    letterSpacing: '-0.01em',
     borderRadius: 999, padding: pad, width: full ? '100%' : undefined,
     transition: 'transform var(--t) var(--ease), box-shadow var(--t), background var(--t), color var(--t), border-color var(--t)',
     transform: h ? 'translateY(-2px) scale(1.03)' : 'none',
@@ -128,7 +128,7 @@ function Pill({ children, active, onClick, icon }) {
   const [h, setH] = useState(false);
   return (
     <button onClick={onClick} onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)} style={{
-      display: 'inline-flex', alignItems: 'center', gap: 7, fontFamily: 'DM Sans, sans-serif', fontWeight: 500, fontSize: '0.86rem',
+      display: 'inline-flex', alignItems: 'center', gap: 7, fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: '0.86rem',
       padding: '9px 16px', borderRadius: 999,
       background: active ? 'var(--teal)' : (h ? 'rgba(255,255,255,0.08)' : 'var(--glass-fill)'),
       color: active ? '#06121d' : '#fff',
