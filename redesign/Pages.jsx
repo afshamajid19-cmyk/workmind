@@ -185,21 +185,129 @@ function Clients({ go }) {
 }
 
 /* ===================== CASE STUDIES ===================== */
+
+/* Full-width editorial card — used on the Cases page only */
+function CaseCardFull({ c, index, go }) {
+  const num = String(index + 1).padStart(2, '0');
+  return (
+    <Reveal delay={index * 0.05}>
+      <div style={{
+        borderRadius: 'var(--r-lg)',
+        border: '1px solid var(--glass-stroke)',
+        background: 'rgba(255,255,255,0.022)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        boxShadow: 'var(--e1)',
+        overflow: 'hidden',
+        position: 'relative',
+      }}>
+        {/* Top edge shimmer */}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent 0%, rgba(56,189,248,0.25) 40%, rgba(129,140,248,0.20) 70%, transparent 100%)' }} />
+
+        {/* Header band */}
+        <div style={{ padding: '28px 40px 24px', borderBottom: '1px solid var(--glass-stroke)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800, fontSize: '2.8rem', letterSpacing: '-0.06em', lineHeight: 1, color: 'rgba(255,255,255,0.07)', userSelect: 'none', minWidth: '3ch' }}>{num}</span>
+            <div>
+              <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.62rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--teal)', background: 'rgba(56,189,248,0.08)', border: '1px solid var(--teal-stroke)', padding: '5px 12px', borderRadius: 999, display: 'inline-block' }}>{c.dept}</span>
+              <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: '1.45rem', color: 'var(--on-dark)', letterSpacing: '-0.02em', lineHeight: 1.25, marginTop: 10 }}>{c.title}</h3>
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 5 }}>
+            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.58rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--on-dark-3)' }}>Early engagement · Anonymised under NDA</span>
+            <div style={{ display: 'flex', gap: 6 }}>
+              {['Anonymised', 'Real outcomes', 'Measured'].map((tag) => (
+                <span key={tag} style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.54rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(56,189,248,0.55)', background: 'rgba(56,189,248,0.06)', padding: '3px 8px', borderRadius: 6 }}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Body — two columns */}
+        <div className="wm-case-body">
+          {/* Left: narrative */}
+          <div style={{ padding: '32px 40px', borderRight: '1px solid var(--glass-stroke)' }}>
+            <div style={{ marginBottom: 24 }}>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--on-dark-3)', marginBottom: 10 }}>The situation</div>
+              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: 'var(--on-dark-2)', fontSize: '0.97rem', lineHeight: 1.7 }}>{c.problem}</p>
+            </div>
+            <div style={{ padding: '20px 22px', borderRadius: 14, background: 'rgba(56,189,248,0.04)', border: '1px solid rgba(56,189,248,0.09)' }}>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 9 }}>What we built</div>
+              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: 'var(--on-dark-2)', fontSize: '0.93rem', lineHeight: 1.65 }}>{c.built}</p>
+            </div>
+          </div>
+
+          {/* Right: outcomes */}
+          <div style={{ padding: '32px 36px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--on-dark-3)', marginBottom: 24 }}>Measured outcomes</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+              {c.results.map((r) => (
+                <div key={r.l} style={{ display: 'flex', alignItems: 'baseline', gap: 14 }}>
+                  <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800, fontSize: '2.2rem', letterSpacing: '-0.05em', color: 'var(--on-dark)', lineHeight: 1, minWidth: '4ch' }}>{r.v}</span>
+                  <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '0.85rem', color: 'var(--on-dark-2)', lineHeight: 1.4 }}>{r.l}</span>
+                </div>
+              ))}
+            </div>
+            <p style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.58rem', letterSpacing: '0.1em', color: 'rgba(139,163,199,0.35)', marginTop: 28, lineHeight: 1.6, textTransform: 'uppercase' }}>Outcomes measured during engagement. Client details withheld under NDA.</p>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
 function Cases({ go }) {
-  const [f, setF] = useState('all');
-  const tabs = [{ id: 'all', label: 'All' }, ...INDUSTRIES.map((i) => ({ id: i.id, label: i.name }))];
-  const list = f === 'all' ? CASES : CASES.filter((c) => c.industry === f);
   return (
     <>
-      <PageHero eyebrow="Case studies" title="Real problems." accent="Hard numbers." sub="Every engagement opens with an assessment and closes with metrics. No vanity stats — just what moved." />
-      <section className="wm-section" style={{ paddingTop: 24 }}>
+      {/* Honest hero */}
+      <PageHero
+        eyebrow="The work"
+        title="A few honest accounts from"
+        accent="early engagements."
+        sub="We're a new company and we're not going to pretend otherwise. These are real problems we were brought in to solve — pilot engagements and early client work. Every client is anonymised under NDA."
+      />
+
+      {/* Transparency note */}
+      <section style={{ paddingTop: 0, paddingBottom: 24 }}>
         <div className="wm-container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 36 }}>
-            {tabs.map((t) => <Pill key={t.id} active={f === t.id} onClick={() => setF(t.id)}>{t.label}</Pill>)}
+          <Reveal>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 24px', borderRadius: 14, background: 'rgba(56,189,248,0.05)', border: '1px solid rgba(56,189,248,0.12)', maxWidth: 860 }}>
+              <Icon name="shield-check" size={18} color="var(--teal)" style={{ flexShrink: 0, marginTop: 1 }} />
+              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '0.88rem', lineHeight: 1.65, color: 'var(--on-dark-2)', margin: 0 }}>
+                <strong style={{ color: 'var(--on-dark)', fontWeight: 600 }}>We won't pad this page.</strong>{' '}
+                All engagements below are anonymised under client NDA. The outcomes are real — measured during the engagement, not projected. We'll add to this page as we earn the right to.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Case studies — editorial full-width list */}
+      <section className="wm-section" style={{ paddingTop: 16 }}>
+        <div className="wm-container">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+            {CASES.map((c, i) => <CaseCardFull key={c.title} c={c} index={i} go={go} />)}
           </div>
-          <div className="wm-casegrid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
-            {list.map((c, i) => <CaseCard key={c.title} c={c} delay={i * 0.05} />)}
-          </div>
+        </div>
+      </section>
+
+      {/* CTA — forward-looking */}
+      <section style={{ paddingBottom: 120 }}>
+        <div className="wm-container">
+          <Reveal>
+            <div style={{ borderRadius: 'var(--r-lg)', padding: '56px 48px', background: 'linear-gradient(120deg, rgba(27,79,138,0.28), rgba(5,13,26,0.18))', border: '1px solid var(--glass-stroke)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+              <div className="wm-mesh" style={{ opacity: 0.4 }} />
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <Eyebrow style={{ justifyContent: 'center' }}>Be next</Eyebrow>
+                <h2 className="wm-d2" style={{ marginTop: 18, color: 'var(--on-dark)' }}>Your business could be<br /><span className="wm-gtext">case study number seven.</span></h2>
+                <p className="wm-lead" style={{ marginTop: 20, maxWidth: 500, margin: '16px auto 0' }}>We're selectively onboarding new clients. Tell us your bottleneck — we'll show you exactly where AI actually pays off.</p>
+                <div style={{ marginTop: 36, display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <Button variant="primary" size="lg" onClick={() => go('contact')}>Book a Call <Icon name="arrow-right" size={17} /></Button>
+                  <Button variant="glass" size="lg" onClick={() => go('solutions')}>See how we work</Button>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

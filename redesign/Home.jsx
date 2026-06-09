@@ -240,8 +240,8 @@ function CasesSection({ go }) {
     <section className="wm-section" style={{ paddingTop: 0 }}>
       <div className="wm-container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 20, marginBottom: 48 }}>
-          <SectionHead eyebrow="Proof" title="Real problems." accent="Hard numbers." maxW={560} />
-          <Button variant="ghost" onClick={() => go('cases')}>All case studies <Icon name="arrow-right" size={15} /></Button>
+          <SectionHead eyebrow="Early work" title="A few honest accounts" accent="from the field." sub="We're building this track record in real time. These are anonymised pilot and early client engagements — real problems, real work." maxW={580} />
+          <Button variant="ghost" onClick={() => go('cases')}>See the full work <Icon name="arrow-right" size={15} /></Button>
         </div>
         <div className="wm-casegrid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
           {CASES.slice(0, 3).map((c, i) => <CaseCard key={c.title} c={c} delay={i * 0.07} />)}

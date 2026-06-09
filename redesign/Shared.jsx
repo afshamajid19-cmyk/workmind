@@ -50,30 +50,58 @@ function IndustryCard({ ind, onClick, delay }) {
   );
 }
 
-/* ---------- Case study card ---------- */
+/* ---------- Case study card (home preview — compact) ---------- */
 function CaseCard({ c, delay }) {
   return (
     <Reveal delay={delay || 0}>
-      <GlassCard glow style={{ padding: 30, height: '100%', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'inline-flex', alignSelf: 'flex-start', fontFamily: 'DM Mono, monospace', fontWeight: 500, fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--teal)', background: 'rgba(75,170,200,0.12)', border: '1px solid var(--teal-stroke)', padding: '6px 12px', borderRadius: 999, marginBottom: 16 }}>{c.dept}</div>
-        <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: '1.15rem', color: 'var(--on-dark)', marginBottom: 16, letterSpacing: '-0.01em', lineHeight: 1.35 }}>{c.title}</h3>
-        <div style={{ marginBottom: 14 }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.66rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--on-dark-3)', marginBottom: 6 }}>The Problem</div>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--on-dark-2)', fontSize: '0.9rem', lineHeight: 1.6 }}>{c.problem}</p>
+      <div style={{
+        padding: '32px 30px 26px',
+        borderRadius: 'var(--r-lg)',
+        border: '1px solid var(--glass-stroke)',
+        background: 'rgba(255,255,255,0.025)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        boxShadow: 'var(--e1)',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        {/* top edge highlight */}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)' }} />
+
+        {/* Sector + honest badge */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.62rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--teal)', background: 'rgba(56,189,248,0.08)', border: '1px solid var(--teal-stroke)', padding: '5px 11px', borderRadius: 999 }}>{c.dept}</span>
+          <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.58rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--on-dark-3)' }}>Early work · NDA</span>
         </div>
-        <div style={{ marginBottom: 20 }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.66rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--on-dark-3)', marginBottom: 6 }}>What We Built</div>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--on-dark-2)', fontSize: '0.9rem', lineHeight: 1.6 }}>{c.built}</p>
+
+        {/* Title */}
+        <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: '1.12rem', color: 'var(--on-dark)', marginBottom: 14, letterSpacing: '-0.015em', lineHeight: 1.3 }}>{c.title}</h3>
+
+        {/* Problem — the narrative hero */}
+        <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: 'var(--on-dark-2)', fontSize: '0.9rem', lineHeight: 1.65, flex: 1 }}>{c.problem}</p>
+
+        {/* What was built — quiet box */}
+        <div style={{ marginTop: 16, padding: '12px 14px', borderRadius: 10, background: 'rgba(56,189,248,0.04)', border: '1px solid rgba(56,189,248,0.09)' }}>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.58rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 5 }}>What we built</div>
+          <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: 'var(--on-dark-2)', fontSize: '0.85rem', lineHeight: 1.58 }}>{c.built}</p>
         </div>
-        <div style={{ marginTop: 'auto', display: 'flex', gap: 22, flexWrap: 'wrap', paddingTop: 18, borderTop: '1px solid var(--glass-stroke)' }}>
-          {c.results.map((r) => (
-            <div key={r.l}>
-              <div style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800, fontSize: '1.6rem', color: 'var(--teal)', lineHeight: 1, letterSpacing: '-0.04em' }}>{r.v}</div>
-              <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.74rem', color: 'var(--on-dark-2)', marginTop: 5, letterSpacing: '0.01em' }}>{r.l}</div>
-            </div>
-          ))}
+
+        {/* Measured outcomes — de-emphasised */}
+        <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--glass-stroke)' }}>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.56rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--on-dark-3)', marginBottom: 10 }}>Measured outcomes</div>
+          <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap' }}>
+            {c.results.map((r) => (
+              <div key={r.l}>
+                <div style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.04em', color: 'var(--on-dark)', lineHeight: 1 }}>{r.v}</div>
+                <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '0.7rem', color: 'var(--on-dark-3)', marginTop: 4 }}>{r.l}</div>
+              </div>
+            ))}
+          </div>
         </div>
-      </GlassCard>
+      </div>
     </Reveal>
   );
 }

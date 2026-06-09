@@ -363,6 +363,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .wm-navcta   { display: flex; }
 .wm-burger   { display: none !important; }
 
+/* Case card full — responsive two-column */
+.wm-case-body { display: grid; grid-template-columns: 1.4fr 1fr; }
+@media (max-width: 860px) {
+  .wm-case-body { grid-template-columns: 1fr !important; }
+  .wm-case-body > div:first-child { border-right: none !important; border-bottom: 1px solid var(--glass-stroke); }
+}
+
 @media (max-width: 820px) {
   .wm-navlinks { display: none !important; }
   .wm-navcta   { display: none !important; }
