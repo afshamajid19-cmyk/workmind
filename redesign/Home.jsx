@@ -44,7 +44,7 @@ function HeroPanel() {
 
 function Hero({ go }) {
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', paddingTop: 168, paddingBottom: 96, minHeight: '92vh', display: 'flex', alignItems: 'center' }}>
+    <section className="wm-hero-section" style={{ position: 'relative', overflow: 'hidden', minHeight: '92vh', display: 'flex', alignItems: 'center' }}>
       {/* Animated atmospheric blobs */}
       <div className="wm-blob wm-blob-a" />
       <div className="wm-blob wm-blob-b" />

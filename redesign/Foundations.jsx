@@ -17,22 +17,53 @@ function Icon({ name, size = 24, color = 'currentColor', sw = 1.75, style }) {
   }, children);
 }
 
-/* ---------- Logo (toothed gear-network mark + wordmark) ---------- */
+/* ---------- Logo (C-arc toothed gear + network circles) ---------- */
 function Logo({ dark = false, compact = false }) {
   const c = dark ? '#0D1B2A' : '#fff';
-  /* 12-tooth gear ring (evenodd hole) + 3 network circles + 2 satellite dots */
-  const GEAR = "M54 32 L60 33.5 L59.4 37.8 L53.3 37.7 L51.1 43 L55.5 47.3 L52.8 50.7 L47.6 47.6 L43 51.1 L44.7 57 L40.7 58.6 L37.7 53.3 L32 54 L30.5 60 L26.2 59.4 L26.3 53.3 L21 51.1 L16.8 55.5 L13.3 52.8 L16.4 47.6 L13 43 L7.1 44.7 L5.4 40.7 L10.8 37.7 L10 32 L4 30.5 L4.6 26.2 L10.8 26.3 L13 21 L8.5 16.8 L11.2 13.3 L16.4 16.4 L21 13 L19.3 7.1 L23.4 5.4 L26.3 10.8 L32 10 L33.5 4 L37.8 4.6 L37.7 10.8 L43 13 L47.3 8.5 L50.7 11.2 L47.6 16.4 L51.1 21 L57 19.3 L58.6 23.4 L53.3 26.3 Z M32 15 A17 17 0 0 1 32 49 A17 17 0 0 1 32 15 Z";
+  /*
+   * 9-tooth partial gear ring — 260° arc (50° to 310° CW), opening on the right.
+   * Center (30,32), valley-r=22, peak-r=27, inner-r=16.
+   * Outer teeth traced as polyline, then inner arc closes the ring.
+   */
+  const GEAR = [
+    "M44.1 48.9",
+    /* tooth 1 */ "L43.5 55.4 L39.7 57.2",
+    /* valley  */ "L34.2 53.6",
+    /* tooth 2 */ "L30.9 59 L26.2 58.7",
+    /* valley  */ "L23.3 53",
+    /* tooth 3 */ "L17.7 56.1 L13.8 53.6",
+    /* valley  */ "L14 47.1",
+    /* tooth 4 */ "L7.6 47.1 L5.3 43",
+    /* valley  */ "L8.7 37.6",
+    /* tooth 5 */ "L3.1 34.4 L3.1 29.6",
+    /* valley  */ "L8.7 26.4",
+    /* tooth 6 */ "L5.3 21 L7.4 17.3",
+    /* valley  */ "L14 16.9",
+    /* tooth 7 */ "L13.8 10.4 L17.3 8.2",
+    /* valley  */ "L23.2 11.1",
+    /* tooth 8 */ "L26.2 5.3 L30.5 5",
+    /* valley  */ "L34.2 10.4",
+    /* tooth 9 */ "L39.7 6.8 L43.9 8.9",
+    /* end     */ "L44.1 15.1",
+    /* inner arc: 310°→50° CCW (260°) */ "L40.3 19.7 A16 16 0 1 0 40.3 44.3 Z",
+  ].join(" ");
   return (
     <div style={{ display: 'inline-flex', alignItems: 'center', gap: 11 }}>
-      <svg width="32" height="32" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-        <path fill={c} fillRule="evenodd" d={GEAR} />
-        <circle cx="22" cy="19" r="10" fill={c} />
-        <circle cx="34" cy="32" r="9"  fill={c} />
-        <circle cx="22" cy="45" r="10" fill={c} />
-        <circle cx="54" cy="12" r="5"  fill={c} />
-        <circle cx="56" cy="52" r="4.5" fill={c} />
+      <svg width="36" height="36" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path fill={c} d={GEAR} />
+        {/* three overlapping network circles */}
+        <circle cx="26" cy="17" r="13" fill={c} />
+        <circle cx="37" cy="32" r="10" fill={c} />
+        <circle cx="26" cy="47" r="12" fill={c} />
+        {/* satellite dots outside gear ring */}
+        <circle cx="52" cy="11" r="5"   fill={c} />
+        <circle cx="54" cy="52" r="4.5" fill={c} />
       </svg>
-      {!compact && <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '0.98rem', letterSpacing: '0.06em', color: c }}>WORKMIND<span style={{ color: 'var(--teal)' }}>.AI</span></span>}
+      {!compact && (
+        <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '0.98rem', letterSpacing: '0.06em', color: c }}>
+          WORKMIND<span style={{ color: 'var(--teal)' }}>.AI</span>
+        </span>
+      )}
     </div>
   );
 }

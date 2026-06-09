@@ -2,7 +2,7 @@
 
 function PageHero({ eyebrow, title, accent, sub, children }) {
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', paddingTop: 168, paddingBottom: 80 }}>
+    <section className="wm-page-hero-section" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className="wm-mesh" />
       <div className="wm-grid-tex" />
       <div className="wm-container" style={{ position: 'relative', zIndex: 1 }}>
@@ -267,20 +267,6 @@ function Cases({ go }) {
         sub="We're a new company and we're not going to pretend otherwise. These are real problems we were brought in to solve — pilot engagements and early client work. Every client is anonymised under NDA."
       />
 
-      {/* Transparency note */}
-      <section style={{ paddingTop: 0, paddingBottom: 24 }}>
-        <div className="wm-container">
-          <Reveal>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, padding: '18px 24px', borderRadius: 14, background: 'rgba(56,189,248,0.05)', border: '1px solid rgba(56,189,248,0.12)', maxWidth: 860 }}>
-              <Icon name="shield-check" size={18} color="var(--teal)" style={{ flexShrink: 0, marginTop: 1 }} />
-              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '0.88rem', lineHeight: 1.65, color: 'var(--on-dark-2)', margin: 0 }}>
-                <strong style={{ color: 'var(--on-dark)', fontWeight: 600 }}>We won't pad this page.</strong>{' '}
-                All engagements below are anonymised under client NDA. The outcomes are real — measured during the engagement, not projected. We'll add to this page as we earn the right to.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       {/* Case studies — editorial full-width list */}
       <section className="wm-section" style={{ paddingTop: 16 }}>
