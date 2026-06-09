@@ -232,7 +232,7 @@ function CaseCardFull({ c, index, go }) {
               <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: 'var(--on-dark-2)', fontSize: '0.97rem', lineHeight: 1.7 }}>{c.problem}</p>
             </div>
             <div style={{ padding: '20px 22px', borderRadius: 14, background: 'rgba(56,189,248,0.04)', border: '1px solid rgba(56,189,248,0.09)' }}>
-              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 9 }}>What we built</div>
+              <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 9 }}>How we'd approach it</div>
               <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: 'var(--on-dark-2)', fontSize: '0.93rem', lineHeight: 1.65 }}>{c.built}</p>
             </div>
           </div>

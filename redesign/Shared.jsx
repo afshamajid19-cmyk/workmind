@@ -83,9 +83,9 @@ function CaseCard({ c, delay }) {
         {/* Problem — the narrative hero */}
         <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: 'var(--on-dark-2)', fontSize: '0.9rem', lineHeight: 1.65, flex: 1 }}>{c.problem}</p>
 
-        {/* What was built — quiet box */}
+        {/* Approach box */}
         <div style={{ marginTop: 16, padding: '12px 14px', borderRadius: 10, background: 'rgba(56,189,248,0.04)', border: '1px solid rgba(56,189,248,0.09)' }}>
-          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.58rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 5 }}>What we built</div>
+          <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.58rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 5 }}>How we'd approach it</div>
           <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: 'var(--on-dark-2)', fontSize: '0.85rem', lineHeight: 1.58 }}>{c.built}</p>
         </div>
 

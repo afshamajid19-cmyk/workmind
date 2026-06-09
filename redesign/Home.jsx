@@ -160,18 +160,6 @@ function IndustriesSection({ go }) {
   );
 }
 
-function StatsSection() {
-  return (
-    <section className="wm-section">
-      <div className="wm-container">
-        <div style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 48, alignItems: 'center' }} className="wm-statswrap">
-          <SectionHead eyebrow="The numbers" title="Outcomes we" accent="measure, not promise." sub="Every engagement opens with an assessment and closes with hard metrics. These are the averages our clients see." maxW={460} />
-          <Reveal delay={0.1}><StatsBand /></Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ---------- Clients section — marquee redesign with glassmorphism cards ---------- */
 function ClientCard({ client }) {
@@ -251,16 +239,6 @@ function CasesSection({ go }) {
   );
 }
 
-function TestimonialsSection() {
-  return (
-    <section className="wm-section" style={{ paddingTop: 0 }}>
-      <div className="wm-container">
-        <SectionHead eyebrow="In their words" title="Operators who" accent="stopped firefighting." center maxW={680} />
-        <div style={{ marginTop: 52 }}><Testimonials /></div>
-      </div>
-    </section>
-  );
-}
 
 function Home({ go }) {
   return (
@@ -270,10 +248,8 @@ function Home({ go }) {
       <ServicesBento go={go} />
       <MethodSection />
       <IndustriesSection go={go} />
-      <StatsSection />
       <ClientsTeaser />
       <CasesSection go={go} />
-      <TestimonialsSection />
     </>
   );
 }
