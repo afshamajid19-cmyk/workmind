@@ -262,9 +262,9 @@ function Cases({ go }) {
       {/* Honest hero */}
       <PageHero
         eyebrow="The work"
-        title="A few honest accounts from"
-        accent="early engagements."
-        sub="We're a new company and we're not going to pretend otherwise. These are real problems we were brought in to solve — pilot engagements and early client work. Every client is anonymised under NDA."
+        title="Problems we've been"
+        accent="called in to solve."
+        sub="Client names are protected under NDA. We share these because the thinking is what matters — the problem, how we approached it, and what moved."
       />
 
 

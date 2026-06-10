@@ -228,7 +228,7 @@ function CasesSection({ go }) {
     <section className="wm-section" style={{ paddingTop: 0 }}>
       <div className="wm-container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 20, marginBottom: 48 }}>
-          <SectionHead eyebrow="Early work" title="A few honest accounts" accent="from the field." sub="We're building this track record in real time. These are anonymised pilot and early client engagements — real problems, real work." maxW={580} />
+          <SectionHead eyebrow="The work" title="Problems we've been" accent="called in to solve." sub="Every client is anonymised under NDA. We share these to show how we think — not to inflate a track record." maxW={580} />
           <Button variant="ghost" onClick={() => go('cases')}>See the full work <Icon name="arrow-right" size={15} /></Button>
         </div>
         <div className="wm-casegrid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
